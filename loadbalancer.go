@@ -141,5 +141,10 @@ func main() {
         proxyHandler(w, r)
     })
 
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    port := os.Getenv("PORT")
+if port == "" {
+    port = "8080" // local default
+}
+log.Fatal(http.ListenAndServe(":"+port, nil))
+
 }
